@@ -15,6 +15,7 @@ const swapImage = ()=>{
     mainImage.alt = imageCache[imageCounter].alt;
 
     caption.textContent = imageCache[imageCounter].alt;
+    console.log(imageCache.length)
     
 }
 const lastImage = ()=>{
