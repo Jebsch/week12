@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="css/project.css" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Images</title>
+  </head>
+<body>
+    <main>
+        <h1>Fishing Slide Show</h1>
+
+        <ul id="image_list">
+            <li><a href="images/carousel 1.jpg" title="So enjoyable"></a></li>
+            <li><a href="images/carousel 2.jpg" title="Incredibly entertaining"></a></li>
+            <li><a href="images/carousel 3.jpg" title="A blast"></a></li>
+            <li><a href="images/carousel 4.jpg" title="Amusingly delightful"></a></li>
+            <li><a href="images/carousel 5.jpg" title="Great fun"></a></li>
+        </ul>
+    
+        <p><img id="main_image" src="images/carousel 1.jpg" alt="So enjoyable"></p>
+        <h2 id="caption">So enjoyable</h2>    
+        <%- include('layouts/menu') -%>
+        <script src="js/slide-show.js"></script>
+    </main>  
+</body>
+</html>

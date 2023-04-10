@@ -17,6 +17,10 @@ label {
     width: 11em;
     text-align: right;
 }
+.terms {
+    font-size:small;
+    text-align: left;
+}
 input {
     margin-left: 1em;
     margin-right: 0.5em;
@@ -68,7 +72,10 @@ p {
 #image_list{
     display: none;
 }
-
+img {
+    width: 350px;
+    height:180px;
+}
 .menu-ul {
     list-style-type: none;
     margin: 0;

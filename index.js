@@ -35,6 +35,12 @@ app.get("/profile", (req, res) => {
   res.render("profile", {user})
 });
 
+app.get("/terms", (req, res) => {
+  res.render("terms");
+});
+app.get("/carouselimagecarousel", (req, res) => {
+  res.render("photos");
+});
 app.get("/math", (req, res) => {
   res.sendFile(path.resolve(__dirname + "/views/", "math.html"));
 });
@@ -43,9 +49,6 @@ app.get("/faq", (req, res) => {
   res.sendFile(path.resolve(__dirname + "/views/", "faq.html"));
 });
 
-app.get("/terms", (req, res) => {
-  res.sendFile(path.resolve(__dirname + "/views/", "terms.html"));
-});
 
 app.get("/slides", (req, res) => {
   res.sendFile(path.resolve(__dirname + "/views/", "slide-show.html"));

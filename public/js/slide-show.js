@@ -17,6 +17,15 @@ const swapImage = ()=>{
     caption.textContent = imageCache[imageCounter].alt;
     
 }
+const lastImage = ()=>{
+    imageCounter = (imageCounter -1) % imageCache.length;
+
+    mainImage.src = imageCache[imageCounter].src;
+    mainImage.alt = imageCache[imageCounter].alt;
+
+    caption.textContent = imageCache[imageCounter].alt;
+    
+}
 
 document.addEventListener("DOMContentLoaded", () => {
     const links= document.querySelectorAll("a");
@@ -33,5 +42,5 @@ document.addEventListener("DOMContentLoaded", () => {
         imageCache.push(image);
     }
 
-    setInterval(swapImage, 2000);
+    setInterval(swapImage, 4000);
 });
