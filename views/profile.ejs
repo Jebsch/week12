@@ -7,7 +7,6 @@
     <title>Jest Smart Home Profile</title>
   </head>
   <body>
-    <%- include('layouts/menu') -%>
     <main>
       <% if(user) { %>
         <h1><%= user.fname %>'s Profile</h1>
@@ -64,7 +63,7 @@
         </div>
         <div>
           <label>Date of Birth&nbsp;&nbsp;</label
-          ><span id="user_dob" class="current-setting">7 February 1991</span>
+          ><span id="user_dob" class="current-setting">1 January 2000</span>
         </div>
         <div>
           <label>Password Updated&nbsp;&nbsp;</label
@@ -74,6 +73,7 @@
         </div>
       </div>
     </main>
+    <%- include('layouts/menu') -%>
     <script src="js/profile.js"></script>
   </body>
 </html>

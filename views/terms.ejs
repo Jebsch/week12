@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>FAQs terms of services</title>
+    <link rel="stylesheet" href="css/faq.css" />
+  </head>
+
+  <body>
+    <main>
+      <h1>Terms of Service</h1>
+      <p>
+        - By accessing this website, you agree to wear a clown nose at all times.
+        - You are required to perform a cartwheel before making any purchases on this website.
+        - We reserve the right to send you daily cat videos via email, whether you want them or not.
+        - By using this service, you agree to speak in pirate language on all customer service calls.
+        - In the event of a zombie apocalypse, we are not responsible for any delays in delivery.
+        - You are required to dance the cha-cha every time you use our app.
+        - You must wear a tutu while using our website on Tuesdays.
+        - We reserve the right to randomly assign you a new nickname every month.
+        - By using this service, you agree to become an expert in obscure trivia.
+        - In the event of a global potato shortage, we may substitute your order with sweet potatoes without warning.
+      </p>
+      <p><input type="button" id="accept" value="Accept" /></p>
+      <%- include('layouts/menu') -%>
+      <script>
+        const btn = document.querySelector("#accept");
+        btn.addEventListener(
+          "click",
+          () => (window.location.href = "faq?accepted=true")
+        );
+      </script>
+    </main>
+  </body>
+</html>

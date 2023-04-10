@@ -51,7 +51,7 @@ const onSubmit = (evt) => {
   }
 
   if (!passwordRegEx.test(password)) {
-    $("#password_error").textContent = "Password is not secure.";
+    $("#password_error").textContent = "Password must be at least 8 characters and include an uppercase and a lowercase character.";
     formErrors = true;
   }
 
