@@ -5,7 +5,7 @@ const $ = (selector) => document.querySelector(selector);
 const emailRegEx = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
 
 const passwordRegEx = /^(?=.*?[A-Z])(?=.*?[a-z]).{8,}$/;
-
+//resets fields to original positions
 const onReset = (evt) => {
   resetErrors();
   //TODO:: Reset the reset-able fields
@@ -18,20 +18,20 @@ const onReset = (evt) => {
 
   evt.preventDefault();
 };
-
+//resets errors
 const resetErrors = () => {
   $("#name_error").textContent = "";
   $("#password_error").textContent = "";
   $("#email_error").textContent = "";
 };
-
+//checks errors
 const onSubmit = (evt) => {
   resetErrors();
 
-  //TODO:: Use this boolean to keep track of any errors because you need to prevent the settings
-  //       from updating if even one field is wrong
+  
+ 
   let formErrors = false;
-
+//changes all values to submitted information
   let firstName = $("#first_name").value;
   let lastName = $("#last_name").value;
   let email = $("#email").value;
@@ -39,7 +39,7 @@ const onSubmit = (evt) => {
   let confirmPassword = $("#confirm_password").value;
   let dob = new Date($("#dob").value);
   let today = new Date();
-
+//if statements checking for errors
   if (firstName == "" || lastName == "") {
     $("#name_error").textContent = "Name fields can't be empty.";
     formErrors = true;
@@ -64,7 +64,7 @@ const onSubmit = (evt) => {
     $("#dob_error").textContent = "Date of birth must be in the past.";
     formErrors = true;
   }
-
+//submits form if there isn't errors
   if (!formErrors) {
     $("#user_dob").textContent = dob.toDateString();
 
@@ -80,7 +80,7 @@ const onSubmit = (evt) => {
     evt.preventDefault()
   }
 };
-
+//making the buttons work
 document.addEventListener("DOMContentLoaded", () => {
   $("#update_profile").addEventListener("click", onSubmit);
 

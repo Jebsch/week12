@@ -8,17 +8,18 @@
   </head>
 <body>
     <main>
-        <h1>Fishing Slide Show</h1>
-
+        <h1>Your photos could be here!</h1>
+        <div class = "image-container">
         <ul id="image_list">
-            <li><a href="images/carousel 1.jpg" title="So enjoyable"></a></li>
-            <li><a href="images/carousel 2.jpg" title="Incredibly entertaining"></a></li>
-            <li><a href="images/carousel 3.jpg" title="A blast"></a></li>
-            <li><a href="images/carousel 4.jpg" title="Amusingly delightful"></a></li>
-            <li><a href="images/carousel 5.jpg" title="Great fun"></a></li>
+            <li><a class="carousel" href="images/carousel 1.jpg" title="So enjoyable"></a></li>
+            <li><a class="carousel" href="images/carousel 2.jpg" title="Incredibly entertaining"></a></li>
+            <li><a class="carousel" href="images/carousel 3.jpg" title="A blast"></a></li>
+            <li><a class="carousel" href="images/carousel 4.jpg" title="Amusingly delightful"></a></li>
+            <li><a class="carousel" href="images/carousel 5.jpg" title="Great fun"></a></li>
         </ul>
-    
-        <p><img id="main_image" src="images/carousel 1.jpg" alt="So enjoyable"></p>
+        <p class="photos"><button class="arrow-btn" id="left-arrow-btn"> &larr;</button>
+        <img id="main_image" src="images/carousel 1.jpg" alt="So enjoyable">
+        <button class="arrow-btn" id="right-arrow-btn"> &rarr;</button></p>
         <h2 id="caption">So enjoyable</h2>    
         <%- include('layouts/menu') -%>
         <script src="js/slide-show.js"></script>

@@ -13,7 +13,7 @@ app.use(express.static("public"));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-const PORT = 5000;
+const PORT = 3000;
 
 app.use(expressSession({
   secret:"secret key"
