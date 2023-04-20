@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Minesweeper</title>
+        <link rel="stylesheet" href="css/project.css" />
+        <link rel="stylesheet" href="css/minesweeper.css"/>
+        <script src="js/minesweeper.js"></script>
+    </head>
+
+    <body>
+        <div class="header-container">
+            <header><a href="images/Header.png"><img src="images/Header.png" alt="Header Image"></a></header>
+        </div>
+        <%- include('layouts/menu') -%>
+        <h1>Mines: <span id="mines-count">0</span></h1>
+        
+        <div id="board"></div>
+        <br>
+        
+        <button id="flag-button">🚩</button>
+        <%- include('layouts/footer') -%>
+    </body>
+</html>

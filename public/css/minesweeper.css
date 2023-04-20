@@ -1,0 +1,71 @@
+#board {
+    width: 306px;
+    height: 306px;
+    border: 10px solid darkgray;
+    background-color: lightgray;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#board div {
+    width: 36px;
+    height: 36px;
+    border: 0.5px solid whitesmoke;
+    margin-bottom: 0px;
+    /* text */
+    font-size: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.tile-clicked {
+    background-color: darkgrey;
+}
+
+.x1 {
+    color: blue;
+}
+
+.x2 {
+    color: green;
+}
+
+.x3 {
+    color: red;
+}
+
+.x4 {
+    color: navy;
+}
+
+.x5 {
+    color: brown;
+}
+
+.x6 {
+    color: teal;
+}
+
+.x7 {
+    color: black;
+}
+
+.x8 {
+    color: gray;
+}
+
+#flag-button {
+    margin-left: 0;
+    position:relative;
+    left: 50%;
+    transform: translate(-50%);
+    width: 100px;
+    height: 50px;
+    font-size: 30px;
+    background-color: lightgray;
+    border: none;
+    text-align: center;
+}
+

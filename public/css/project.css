@@ -1,15 +1,14 @@
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #F5F5F5;
+    background-color: rgb(199, 159, 108);
     margin: 0 auto;
-    max-width: 800px;
-    border: 2px solid #0D47A1;
-    padding: 16px;
+    /*border: 2px solid black;*/
+    padding-top: 16px;
     box-shadow: 0 0 10px #CCC;
 }
 
 h1, h2 {
-    color: #0D47A1;
+    color: black;
     text-align: center;
     text-shadow: 2px 2px #DDD;
 }
@@ -21,13 +20,14 @@ h3{
 div {
     margin-bottom: 16px;
 }
+
 p{
     font-size: 13px;
 }
 
 label {
     display: inline-block;
-    width: 224px;
+    width: 20%;
     text-align: right;
     font-size: 14px;
 }
@@ -58,7 +58,7 @@ input[type="text"], input[type="password"], input[type="date"], input[type="numb
 }
 
 input[type="submit"], button {
-    background-color: #0D47A1;
+    background-color: black;
     color: white;
     border: none;
     border-radius: 5px;
@@ -69,8 +69,9 @@ input[type="submit"], button {
     transition: all 0.3s ease;
 }
 
+
 input[type="submit"]:hover, button:hover {
-    background-color: #2962FF;
+    background-color: transparent; 
 }
 
 span.error-span {
@@ -96,13 +97,29 @@ button.arrow-btn {
     color: #021a20;
     cursor: pointer;
     transition: all 0.3s ease;
-    position: relative;
     border: none;
+    background: transparent;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 1;
    
 }
 
 button.arrow-btn:hover {
-    transform: scale(1.2);
+    transform: scale(1.2) translateY(-50%);
+    background-color: white;
+}
+
+#left-arrow-btn{
+    position: absolute;
+    left: 5%;
+    margin-left: 0;
+}
+
+#right-arrow-btn{
+    position: absolute;
+    right: 5%;
 }
 
 ul {
@@ -112,14 +129,16 @@ ul {
 ul.menu-ul {
     list-style-type: none;
     margin: 0;
+    margin-bottom: 12px;
     padding: 0;
     overflow: hidden;
-    background-color: #0D47A1;
+    background-color: rgb(163, 102, 22);
     position:center;
 }
 
 li.menu-li {
     float: left;
+    width: 25%;
 }
 
 li.menu-li a {
@@ -132,26 +151,41 @@ li.menu-li a {
 }
 
 li.menu-li a:hover {
-    background-color: #2962FF;
+    background-color: rgb(134, 81, 10);
 }
 
-img {
-    width: 225px;
-    height: 150px;
+img{
     display: inline-block;
-    margin-left: 55px;
-    margin-right: 25px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px #CCC;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+} 
+
+img.header{
+    object-fit: cover;
+}
+
+img.Carousel_shift{
+    width:80%;
+    left: 50%;
+    transform: translate(-50%,0%);
 }
 .photos{
-    display: flex;
-    justify-content: center;
+    /*justify-content: center;
+    display:flex;
     align-items: center;
     flex-wrap: wrap;
     gap: 10px;
+    right: 10px;*/
+    justify-content: center;
+    align-items: center;
+    display:flex;
     position: relative;
-    right: 10px;
+    width: 100%;
+    padding-top: 40%;
+    height: 0; 
 }
 
 .radio{
@@ -181,12 +215,118 @@ input[type="radio"] {
 }
   
 input[type="radio"]:checked + label {
-    background-color: #6860dd;
+    background-color: rgb(105, 67, 17);
 }
   
 input[type="radio"]:hover + label {
-    background-color: #3eabcc;
+    background-color: rgb(216, 129, 15);
 }
 #set-temp{
     text-align: center;
+}
+
+#image_list{
+    display: flex;
+    position: relative;
+    width:100%;
+    height:100%;
+}
+.footer-ul{
+    position:relative;
+    text-align: center;
+    background: black;
+    color:white;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    padding: 30px;
+    margin: 0;
+
+}
+
+@media only screen and (max-width: 767px) {
+    .header-container {
+      overflow-x: hidden;
+   }
+}
+
+.header-container{
+    overflow-x: hidden;
+}
+
+header{
+    flex-wrap: nowrap;
+    display: flex;
+    width:100%;
+    height:100px;
+}
+
+header img{
+    max-width:100%;
+    height:100px;
+    object-fit: cover;
+    object-position: left;
+}
+
+.footer{
+    margin-top: 150px;
+    width: 100%;
+    padding: 100px 15%;
+    /*Colour scheme of rest of project, make match*/
+    background: #333;
+    /*Colour scheme of text, change to make match rest of project*/
+    color: aliceblue;
+    display: flex;
+    margin-bottom: 0;
+}
+
+.footer div {
+    text-align: center;
+}
+.col2 {
+    flex-grow: 2;
+}
+
+.footer div h3 {
+    font-weight: 300;
+    margin-bottom: 30px;
+    letter-spacing: 1px;
+}
+
+.col1 a {
+    display: block;
+    text-decoration: none;
+    color: aliceblue;
+    margin-bottom: 0px;
+}
+
+.carousel_nav {
+    display: flex;
+    justify-content: center;
+    padding: 10px 0;
+     }
+    
+.carousel_indicator {
+    border: 0;
+    border-radius: 50%;
+    width: 12px;
+    height: 12px;
+    background: rgb(1, 187, 1);
+    margin: 0 12px;
+    cursor: pointer;
+    }
+     
+#current-slide {
+    background: #228B22;
+    }
+    
+.is-hidden {
+    display: none;
+    }
+
+.image-container {
+    margin: 0% auto;
+     }
+#last_name{
+    margin-left: 3.6%;
 }

@@ -38,9 +38,15 @@ app.get("/profile", (req, res) => {
 app.get("/terms", (req, res) => {
   res.render("terms");
 });
+
 app.get("/carouselimagecarousel", (req, res) => {
   res.render("photos");
 });
+
+app.get("/minesweeper", (req, res) => {
+  res.render("minesweeper");
+});
+
 app.get("/math", (req, res) => {
   res.sendFile(path.resolve(__dirname + "/views/", "math.html"));
 });
@@ -49,6 +55,9 @@ app.get("/faq", (req, res) => {
   res.sendFile(path.resolve(__dirname + "/views/", "faq.html"));
 });
 
+app.get("/minesweeper", (req, res) => {
+  res.sendFile(path.resolve(__dirname + "/views/", "minesweeper.html"));
+});
 
 app.get("/slides", (req, res) => {
   res.sendFile(path.resolve(__dirname + "/views/", "slide-show.html"));

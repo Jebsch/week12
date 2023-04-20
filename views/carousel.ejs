@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="css/carousel.css">
+    <link rel="stylesheet" href="css/project.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Car Slide Show</title>
+    <% if(user) { %>
+        <title><%= user.fname %> " "<%= user.lname %> "'s Photos"</title>
+        <%} else { %>
+    <%} %>
+</head>
+<body>
+    <main>
+        <h1>Cool Cars to Enjoy</h1>
+        <%- include('layouts/menu') -%>
+        <div class="carousel">
+        <button class = "carousel_button carousel_button--right is-hidden">
+            <img src="images/double-arrow-right-icon.webp">
+        </button>
+        <div class="carousel-full">
+        <ul class="carousel_container" id="image_list">
+            <li class="Carousel_shift"><img src="images/image1.jpg" title="Fast Boi" class= "Carousel_image current-slide"></a></li>
+            <li class="Carousel_shift"><img src="images/image2.jpg" title="The Only Car That Matters" class= "Carousel_image"></a></li>
+            <li class="Carousel_shift"><img src="images/image3.jpg" title="Vroom" class= "Carousel_image"></a></li>
+            <li class="Carousel_shift"><img src="images/image4.jpg" title="Just Why?" class= "Carousel_image"></a></li>
+            <li class="Carousel_shift"><img src="images/image5.jpg" alt="Fast Boi"></a></li>
+        </ul>
+    </div>
+        <h2 id="caption">All hail the cool cars</h2>
+        <button class = "carousel_button carousel_button--left is-hidden">
+            <img src="images/download.png">
+        </button>
+    </div>
+    <div class="carousel_nav">
+        <button class="carousel_indicator current-slide"></button>
+        <button class="carousel_indicator"></button>
+        <button class="carousel_indicator"></button>
+        <button class="carousel_indicator"></button>
+        <button class="carousel_indicator"></button>
+    </div>
+        <%- include ('layouts/footer') -%>
+
+        <script src="js/carousel.js"></script>
+    </main>
+</body>
+</html>

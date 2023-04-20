@@ -66,19 +66,21 @@ const onSubmit = (evt) => {
   }
 //submits form if there isn't errors
   if (!formErrors) {
-    $("#user_dob").textContent = dob.toDateString();
-
-    $("#user_password_last_changed").textContent = today.toDateString();
-
-    $("#user_first_name").textContent = $("#first_name").value;
-    $("#user_last_name").textContent = $("#last_name").value;
-    $("#user_email").textContent = $("#email").value;
-   
-    $("#profile-form").submit();
-
-  }else{
-    evt.preventDefault()
+      $("#user_dob").textContent = "";
+      $("#user_password_last_changed").textContent = "";
+      $("#user_first_name").textContent = "";
+      $("#user_last_name").textContent = "";
+      $("#user_email").textContent = "";
+  
+      $("#user_dob").textContent = dob.toDateString();
+      $("#user_password_last_changed").textContent = today.toDateString();
+      $("#user_first_name").textContent = $("#first_name").value;
+      $("#user_last_name").textContent = $("#last_name").value;
+      $("#user_email").textContent = $("#email").value;
+     
+      $("#profile-form").submit();
   }
+  evt.preventDefault()
 };
 //making the buttons work
 document.addEventListener("DOMContentLoaded", () => {
