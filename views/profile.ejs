@@ -4,7 +4,7 @@
     <link rel="stylesheet" href="css/project.css" />
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Jest Smart Home Profile</title>
+    <title>Gluten Free Profile</title>
   </head>
   <body>
     <div class="header-container">
@@ -14,7 +14,6 @@
     <main>
       <% if(user) { %>
         <h1><%= user.fname %>'s Profile</h1>
-        <title><%= user.fname %> <%= user.lname %></title>
         <%} else { %>
           <h1>Your Profile</h1>
         <%} %>
@@ -52,7 +51,7 @@
           type="reset"/>
       </div>
       <div class="settings-container">
-        <h2>Current User Settings</h2>
+        <h4>Current User Settings</h4>
         <div class="settings">
           <label class="profile">Name&nbsp;&nbsp;</label>
           <span id="user_first_name" class="current-setting">Lance</span>

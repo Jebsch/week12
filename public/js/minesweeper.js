@@ -1,8 +1,12 @@
+//the board
 var board = [];
+//8 rows
 var rows = 8;
+//8 columns
 var columns = 8;
-
+//10 mines
 var minesCount = 10;
+//declarations
 var minesLocation = []; // "2-2", "3-4", "2-1"
 
 var tilesClicked = 0; //goal to click all tiles except the ones containing mines
@@ -13,7 +17,7 @@ var gameOver = false;
 window.onload = function() {
     startGame();
 }
-
+//randomly generating mines
 function setMines() {
     // minesLocation.push("2-2");
     // minesLocation.push("2-3");
@@ -34,17 +38,28 @@ function setMines() {
     }
 }
 
-
+//populating the board on start
 function startGame() {
+const boardclear = document.getElementById("board");
+while (boardclear.firstChild) {
+    boardclear.removeChild(boardclear.firstChild);
+}
+board = [];
+rows = 8;
+columns = 8;
+minesCount = 10;
+minesLocation = []; // "2-2", "3-4", "2-1"
+tilesClicked = 0; //goal to click all tiles except the ones containing mines
+flagEnabled = false;
+gameOver = false;
+
     document.getElementById("mines-count").innerText = minesCount;
     document.getElementById("flag-button").addEventListener("click", setFlag);
     setMines();
 
-    //populate our board
     for (let r = 0; r < rows; r++) {
         let row = [];
         for (let c = 0; c < columns; c++) {
-            //<div id="0-0"></div>
             let tile = document.createElement("div");
             tile.id = r.toString() + "-" + c.toString();
             tile.addEventListener("click", clickTile);
@@ -54,9 +69,10 @@ function startGame() {
         board.push(row);
     }
 
-    console.log(board);
+    //console.log(board);
 }
 
+//lazy mans toggle
 function setFlag() {
     if (flagEnabled) {
         flagEnabled = false;
@@ -68,6 +84,7 @@ function setFlag() {
     }
 }
 
+//function that makes the game run
 function clickTile() {
     if (gameOver || this.classList.contains("tile-clicked")) {
         return;
@@ -85,9 +102,10 @@ function clickTile() {
     }
 
     if (minesLocation.includes(tile.id)) {
-        // alert("GAME OVER");
+        //alert("GAME OVER");
         gameOver = true;
         revealMines();
+        setTimeout(startGame, 4000);
         return;
     }
 
@@ -99,6 +117,7 @@ function clickTile() {
 
 }
 
+//showing mines on loss
 function revealMines() {
     for (let r= 0; r < rows; r++) {
         for (let c = 0; c < columns; c++) {
@@ -111,6 +130,7 @@ function revealMines() {
     }
 }
 
+//checking for surrounding mines
 function checkMine(r, c) {
     if (r < 0 || r >= rows || c < 0 || c >= columns) {
         return;
@@ -165,7 +185,7 @@ function checkMine(r, c) {
 
 }
 
-
+//checking tiles for mines
 function checkTile(r, c) {
     if (r < 0 || r >= rows || c < 0 || c >= columns) {
         return 0;

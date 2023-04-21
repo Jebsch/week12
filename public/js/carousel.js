@@ -36,25 +36,32 @@ const moveSlide = (track, currentPhoto, destSlide) => {
     track.style.transform = 'translateX(-' + destSlide.style.left + ')';
     currentPhoto.classList.remove ('current-slide');
     destSlide.classList.add ('current-slide');
-    let intervalId = setInterval(swapImage, 4000);
+    clearInterval(intervalId);
+    intervalId = setInterval(swapImage, 4000);
 }
 
 const swapImage = ()=>{
     const currentPhoto = track.querySelector('.current-slide');
-    let nextslide;
+    let nextSlide;
     if (currentPhoto.nextElementSibling !== null) {
-        var nextSlide = currentPhoto.nextElementSibling;
+        nextSlide = currentPhoto.nextElementSibling;
     }
     else{
-        var nextSlide =currentPhoto.parentElement.firstElementChild;   
+        nextSlide =currentPhoto.parentElement.firstElementChild;   
     }
     const currentDot = dotsNav.querySelector('.current-slide');
-    const nextDot = currentDot.nextElementSibling;
+    let nextDot;
+    if (currentPhoto.nextElementSibling !== null) {
+        nextDot = currentDot.nextElementSibling;
+    }
+    else{
+        nextDot =currentDot.parentElement.firstElementChild;   
+    }
     moveSlide (track, currentPhoto, nextSlide);
     dotUpdate (currentDot, nextDot);
        
 }
-
+let intervalId = setInterval(swapImage, 4000);
 //Making a function to indicate dots being operated on the bottom nav
 const dotUpdate = (currentDot, targDot) => {
     currentDot.classList.remove('current-slide');
@@ -77,18 +84,24 @@ const dotUpdate = (currentDot, targDot) => {
     }
 }*/
 //When left pressed, photos shift left by 1
-prevButton.addEventListener('click', e => {
+prevButton.addEventListener('click', () => {
     const currentPhoto = track.querySelector('.current-slide');
+    let prevSlide;
     if (currentPhoto.previousElementSibling !== null) {
-        var prevSlide = currentPhoto.previousElementSibling;
+        prevSlide = currentPhoto.previousElementSibling;
     }
     else{
-        var prevSlide =currentPhoto.parentElement.lastElementChild;   
+        prevSlide =currentPhoto.parentElement.lastElementChild;   
     }
-    const prevSlide = currentPhoto.previousElementSibling;
     const currentDot = dotsNav.querySelector('.current-slide');
-    const prevDot = currentDot.previousElementSibling;
-    const prevInd = slide.findIndex(slide => slide === prevSlide);
+    let prevDot;
+    if (currentDot.previousElementSibling !== null) {
+        prevDot = currentDot.previousElementSibling;
+    }
+    else{
+        prevDot =currentDot.parentElement.lastElementChild;   
+    }
+    //const prevInd = slide.findIndex(slide => slide === prevSlide);
 
     //Moving to previous slide
     moveSlide (track, currentPhoto, prevSlide);
@@ -98,18 +111,25 @@ prevButton.addEventListener('click', e => {
 });
 
 //When right pressed, photos shift right by 1
-nextButton.addEventListener('click', e => {
+nextButton.addEventListener('click', () => {
     const currentPhoto = track.querySelector('.current-slide');
+    let nextSlide;
     if (currentPhoto.nextElementSibling !== null) {
-        var nextSlide = currentPhoto.nextElementSibling;
+        nextSlide = currentPhoto.nextElementSibling;
+        console.log("hi");
     }
     else{
-        var nextSlide =currentPhoto.parentElement.firstElementChild;   
+        nextSlide =currentPhoto.parentElement.firstElementChild;   
     }
-    const nextSlide = currentPhoto.nextElementSibling;
     const currentDot = dotsNav.querySelector('.current-slide');
-    const nextDot = currentDot.nextElementSibling;
-    const nextInd = slide.findIndex(slide => slide === nextSlide);
+    let nextDot;
+    if (currentPhoto.nextElementSibling !== null) {
+        nextDot = currentDot.nextElementSibling;
+    }
+    else{
+        nextDot =currentDot.parentElement.firstElementChild;   
+    }
+    //const nextInd = slide.findIndex(slide => slide === nextSlide);
 
     //Moving to next slide
     moveSlide (track, currentPhoto, nextSlide);

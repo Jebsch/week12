@@ -10,6 +10,7 @@
 
 #board div {
     width: 36px;
+    height: 36px;
     border: 0.5px solid whitesmoke;
     margin-bottom: 0px;
     /* text */

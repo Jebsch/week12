@@ -52,6 +52,18 @@ app.get("/terms", (req, res) => {
   res.render("terms");
 });
 
+app.get("/terms", (req, res) => {
+  res.render("terms");
+});
+
+app.get("/about", (req, res) => {
+  res.render("about");
+});
+
+app.get("/contact", (req, res) => {
+  res.render("contact");
+});
+
 app.get("/carouselimagecarousel", (req, res) => {
   res.render("photos");
 });
