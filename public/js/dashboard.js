@@ -2,6 +2,19 @@
 
 const $ = (selector) => document.querySelector(selector);
 
+if (localStorage.getItem('notif') !== null) {
+  $("#setting_notifications").textContent = localStorage.getItem('notif');
+}
+if (localStorage.getItem('lights') !== null) {
+  $("#setting_lighting_mode").textContent = localStorage.getItem('lights');
+}
+if (localStorage.getItem('postal') !== null) {
+  $("#setting_location").textContent = localStorage.getItem('postal');
+}
+if (localStorage.getItem('temps') !== null) {
+  $("#setting_temperature").textContent = localStorage.getItem('temps');
+}
+
 const postalRegEx =
   /^[ABCEGHJ-NPRSTVXY]\d[ABCEGHJ-NPRSTV-Z][ -]?\d[ABCEGHJ-NPRSTV-Z]\d$/i;
 //resets fields to original positions
@@ -27,10 +40,11 @@ const onSubmit = (evt) => {
   //TODO::Reset any errors before submitting
   resetErrors();
 
-  //TODO:: Set notifications since it doesn't need to be validated
+  //Set notifications since it doesn't need to be validated
   let notificationsOn = $("#notifications").checked;
 
   $("#setting_notifications").textContent = notificationsOn ? "On" : "Off";
+  localStorage.setItem('notif', $("#setting_notifications").textContent);
 
   //querySelectorAll returns an array of everything that matches the argument
   let lightingModeOptions = document.querySelectorAll("[name='lighting_mode']");
@@ -39,6 +53,7 @@ const onSubmit = (evt) => {
     if (lightingModeOptions[i].checked) {
       //Set setting_lighting_mode to the value of the selected radio button
       $("#setting_lighting_mode").textContent = lightingModeOptions[i].value;
+      localStorage.setItem('lights', $("#setting_lighting_mode").textContent);
     }
   }
 
@@ -48,6 +63,7 @@ const onSubmit = (evt) => {
   if (postalRegEx.test(location)) {
     //if the postal code is valid this code will run
     $("#setting_location").textContent = location;
+    localStorage.setItem('postal', $("#setting_location").textContent);
   } else {
     //if postal code is not valid display error
     $("#location_error").textContent =
@@ -74,8 +90,10 @@ const onSubmit = (evt) => {
   } else {
     //Set temperature
     $("#setting_temperature").textContent = temperature;
+    localStorage.setItem('temps', $("#setting_temperature").textContent);
   }
 
+  $("#index-form").submit;
   evt.preventDefault();
 };
 
@@ -112,6 +130,7 @@ setTempBtn.addEventListener("click", () => {
     clearTimeout(timerId);
   }, duration);
 });
+
 //setting the temporary temperature
 function setTemperature(temp) {
   $("#setting_temperature").textContent = temp + duration;

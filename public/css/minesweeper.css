@@ -1,6 +1,6 @@
 #board {
-    width: 306px;
-    height: 306px;
+    width: 304px;
+    height: 304px;
     border: 10px solid darkgray;
     background-color: lightgray;
     margin: 0 auto;
@@ -10,7 +10,6 @@
 
 #board div {
     width: 36px;
-    height: 36px;
     border: 0.5px solid whitesmoke;
     margin-bottom: 0px;
     /* text */

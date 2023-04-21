@@ -10,6 +10,7 @@
     <div class="header-container">
       <header><a href="images/Header.png"><img src="images/Header.png" alt="Header Image"></a></header>
     </div>
+    <%- include('layouts/menu') -%>
     <main>
       <% if(user) { %>
         <h1><%= user.fname %>'s Profile</h1>
@@ -17,7 +18,6 @@
         <%} else { %>
           <h1>Your Profile</h1>
         <%} %>
-        <%- include('layouts/menu') -%>
       <form id="profile-form" action="/update-profile" method="post">
         <div class="name">
           <label>Name</label>
@@ -38,46 +38,43 @@
           ></span>
         </div>
         <div>
-          <label>Password</label><input type="password" id="password" />
+          <label>Password</label><input type="password" id="password" placeholder="Password" />
         </div>
         <div>
           <label>Confirm Password</label>
-          <input type="password" id="confirm_password" />
+          <input type="password" id="confirm_password" placeholder="Confirm password" />
           <span id="password_error" class="error-span"></span>
         </div>
       </form>
-      <div>
-        <label>
-        </label>
+      <div class="butts">
         <input type="submit" id="update_profile" value="Update" /><input
           id="reset_form"
           type="reset"/>
       </div>
-      <div>
+      <div class="settings-container">
         <h2>Current User Settings</h2>
-        <div>
-          <label>Name&nbsp;&nbsp;</label>
+        <div class="settings">
+          <label class="profile">Name&nbsp;&nbsp;</label>
           <span id="user_first_name" class="current-setting">Lance</span>
-          <span id="user_last_name" class="current-setting">Strulovich</span>
+          <span id="user_last_name" class="current-setting" style="margin-left: 0px;">Strulovich</span>
         </div>
-        <div>
-          <label>Email&nbsp;&nbsp;</label>
+        <div class="settings">
+          <label class="profile">Email&nbsp;&nbsp;</label>
           <span id="user_email" class="current-setting"
             >daddysboy@aston.co.uk</span>
         </div>
-        <div>
-          <label>Date of Birth&nbsp;&nbsp;</label>
+        <div class="settings">
+          <label class="profile">Date of Birth&nbsp;&nbsp;</label>
           <span id="user_dob" class="current-setting">1 January 2000</span>
         </div>
-        <div>
-          <label>Password Updated&nbsp;&nbsp;</label>
+        <div class="settings">
+          <label class="profile">Password Updated&nbsp;&nbsp;</label>
           <span id="user_password_last_changed" class="current-setting"
-            >1 March 2023</span
-          >
+            >1 March 2023</span>
         </div>
-      </div>
     </main>
     <%- include('layouts/footer') -%>
+  </div>
     <script src="js/profile.js"></script>
   </body>
 </html>

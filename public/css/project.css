@@ -1,10 +1,15 @@
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background-color: rgb(199, 159, 108);
+    background: url(/images/layer1.svg);
+    background-size: cover;
+    background-repeat: no-repeat;
     margin: 0 auto;
     /*border: 2px solid black;*/
-    padding-top: 16px;
     box-shadow: 0 0 10px #CCC;
+    padding: 20px 5vw;
+    padding-top: 0;
+    padding-bottom: 0;
 }
 
 h1, h2 {
@@ -51,10 +56,20 @@ input[type="text"], input[type="password"], input[type="date"], input[type="numb
     margin-left: 20px;
 }
 
-.name input[type=text], input[type=number] {
+.name input[type=text] {
     display: inline-block;
     width: 28%;
     margin-right: 0;
+}
+
+#duration-hours {
+    display: inline-block;
+    width: 15%;
+    margin-right: 0;
+}
+
+#duration-minutes{
+    width:15%;
 }
 
 input[type="submit"], button {
@@ -69,6 +84,21 @@ input[type="submit"], button {
     transition: all 0.3s ease;
 }
 
+#reset_form{
+    background-color: black;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 8px 16px;
+    margin-left: 24px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+#reset_form:hover, button:hover {
+    background-color: transparent; 
+}
 
 input[type="submit"]:hover, button:hover {
     background-color: transparent; 
@@ -195,9 +225,13 @@ img.Carousel_shift{
     margin-left: 5px;
     cursor: pointer;
     text-align: center;
-    width: 80px;
+    width: 13.5%;
     display: inline-block;
     vertical-align: middle;
+}
+
+#eco{
+    width: 18%;
 }
 
 label[type="radio"] {
@@ -252,6 +286,7 @@ input[type="radio"]:hover + label {
 
 .header-container{
     overflow-x: hidden;
+    margin-bottom: 0;
 }
 
 header{
@@ -271,23 +306,32 @@ header img{
 .footer{
     margin-top: 150px;
     width: 100%;
-    padding: 100px 15%;
     /*Colour scheme of rest of project, make match*/
     background: #333;
     /*Colour scheme of text, change to make match rest of project*/
     color: aliceblue;
     display: flex;
     margin-bottom: 0;
+    flex-wrap: wrap;
+}
+.footer-column {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 30px;
 }
 
-.footer div {
-    text-align: center;
+@media screen and (min-width: 768px) {
+    .footer-column {
+        width: 33%;
+        text-align: center;
+    }
 }
+
 .col2 {
     flex-grow: 2;
 }
 
-.footer div h3 {
+.footer h3 {
     font-weight: 300;
     margin-bottom: 30px;
     letter-spacing: 1px;
@@ -300,33 +344,99 @@ header img{
     margin-bottom: 0px;
 }
 
-.carousel_nav {
-    display: flex;
-    justify-content: center;
-    padding: 10px 0;
-     }
-    
-.carousel_indicator {
-    border: 0;
-    border-radius: 50%;
-    width: 12px;
-    height: 12px;
-    background: rgb(1, 187, 1);
-    margin: 0 12px;
-    cursor: pointer;
-    }
-     
-#current-slide {
-    background: #228B22;
-    }
-    
-.is-hidden {
-    display: none;
-    }
-
 .image-container {
     margin: 0% auto;
-     }
+}
+
 #last_name{
     margin-left: 3.6%;
+}
+
+#notifications{
+    right: -30px;
+    position: relative;
+}
+
+.power-mode-container{
+    width: 100%;
+    display: inline;
+    margin-left: 10px;
+}
+
+form.footy input {
+    min-width: 200px;
+    height: 45px;
+    border-radius: 4px;
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 40px;
+    outline: none;
+    border: none;
+}
+
+form.footy button {
+    background: transparent;
+    border: 2px solid #fff;
+    color: #fff;
+    border-radius: 30px;
+    padding: 10px 30px;
+    font-size: 15px;
+    cursor: pointer;
+    margin-left: 0;
+}
+
+.col1{
+    padding-inline-start:0;
+}
+
+.profile {
+    width: 48%;
+    text-align: right;
+    margin-right: 0.5%;
+}
+
+.current-setting {
+    width: 48%;
+    margin-left: 0.5%;
+    text-align: left;
+    font-size: medium;
+}
+
+.spacer {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+    position: absolute;
+    
+}
+
+
+
+.settings{
+
+}
+
+.settings-container{
+    position:relative;
+    width: 100%;
+    z-index: 1;
+}
+
+.timertime{
+    display: inline-block;
+}
+
+@media only screen and (max-width: 767px) {
+
+.profile {
+    width: 40%;
+}
+
+
+}
+
+.butts{
+    display: flex;
+    justify-content: center;
 }

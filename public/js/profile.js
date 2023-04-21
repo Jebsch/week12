@@ -2,6 +2,13 @@
 
 const $ = (selector) => document.querySelector(selector);
 
+if (localStorage.getItem('udob') !== null) {
+  $("#user_dob").textContent = localStorage.getItem('udob');
+  $("#user_password_last_changed").textContent = localStorage.getItem('pwchange');
+  $("#user_first_name").textContent = localStorage.getItem('fname');
+  $("#user_last_name").textContent = localStorage.getItem('lname');
+  $("#user_email").textContent = localStorage.getItem('email');
+}
 const emailRegEx = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
 
 const passwordRegEx = /^(?=.*?[A-Z])(?=.*?[a-z]).{8,}$/;
@@ -23,6 +30,7 @@ const resetErrors = () => {
   $("#name_error").textContent = "";
   $("#password_error").textContent = "";
   $("#email_error").textContent = "";
+
 };
 //checks errors
 const onSubmit = (evt) => {
@@ -71,14 +79,16 @@ const onSubmit = (evt) => {
       $("#user_first_name").textContent = "";
       $("#user_last_name").textContent = "";
       $("#user_email").textContent = "";
-  
       $("#user_dob").textContent = dob.toDateString();
+      localStorage.setItem('udob', $("#user_dob").textContent);
       $("#user_password_last_changed").textContent = today.toDateString();
+      localStorage.setItem('pwchange', $("#user_password_last_changed").textContent);
       $("#user_first_name").textContent = $("#first_name").value;
+      localStorage.setItem('fname', $("#user_first_name").textContent);
       $("#user_last_name").textContent = $("#last_name").value;
+      localStorage.setItem('lname', $("#user_last_name").textContent);
       $("#user_email").textContent = $("#email").value;
-     
-      $("#profile-form").submit();
+      localStorage.setItem('email', $("#user_email").textContent);
   }
   evt.preventDefault()
 };

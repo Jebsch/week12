@@ -1,40 +1,44 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
+    <link rel="stylesheet" href="css/carousel.css"/>
     <link rel="stylesheet" href="css/project.css" />
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />    
-    <title>Images</title>    
-  </head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <title>Car Slide Show</title>
+</head>
 <body>
-    <div class="header-container">
-        <header><a href="images/Header.png"><img src="images/Header.png" alt="Header Image"></a></header>
-    </div>
+    <%- include('layouts/menu') -%>
     <main>
-        <h1>Your photos could be here!</h1>
-        <%- include('layouts/menu') -%>
-        <div class = "image-container">
-        <ul id="image_list">
-            <li><a class="carousel" href="images/image1.jpg" title="So enjoyable"></a></li>
-            <li><a class="carousel" href="images/image2.jpg" title="Incredibly entertaining"></a></li>
-            <li><a class="carousel" href="images/image3.jpg" title="A blast"></a></li>
-            <li><a class="carousel" href="images/image4.jpg" title="Amusingly delightful"></a></li>
-            <li><a class="carousel" href="images/image5.jpg" title="Great fun"></a></li>
+        <h1>Cool Cars to Enjoy</h1>
+        <div class="carousel">
+        <button class = "carousel_button carousel_button--right"> <!--">arrow-btn" id="right-arrow-btn"-->
+            &rarr;
+        </button>
+        <div class="carousel-full">
+        <ul class="carousel_container" id="image_list">
+            <li class="Carousel_shift"><img src="images/image1.jpg" title="Fast Boi" class= "Carousel_image current-slide"></a></li>
+            <li class="Carousel_shift"><img src="images/image2.jpg" title="The Only Car That Matters" class= "Carousel_image"></a></li>
+            <li class="Carousel_shift"><img src="images/image3.jpg" title="Vroom" class= "Carousel_image"></a></li>
+            <li class="Carousel_shift"><img src="images/image4.jpg" title="Just Why?" class= "Carousel_image"></a></li>
+            <li class="Carousel_shift"><img src="images/image5.jpg" alt="Fast Boi" class= "Carousel_image">></a></li>
         </ul>
-        <p class="photos"><button class="arrow-btn" id="left-arrow-btn"> &larr;</button>
-        <img class="Carousel_shift" id="main_image" src="images/carousel 1.jpg" alt="So enjoyable">
-        <button class="arrow-btn" id="right-arrow-btn"> &rarr;</button></p>
-        </div>
-        <div class="carousel_nav">
-            <button class="carousel_indicator" id="current-slide"></button>
-            <button class="carousel_indicator"></button>
-            <button class="carousel_indicator"></button>
-            <button class="carousel_indicator"></button>
-            <button class="carousel_indicator"></button>
-        </div>
-        <h2 id="caption">So enjoyable</h2>    
-        <%- include('layouts/footer') -%>
-        <script src="js/slide-show.js"></script>
-    </main>  
+    </div>
+        <h2 id="caption">All hail the cool cars</h2>
+        <button class = "carousel_button carousel_button--left"> <!--arrow-btn" id="left-arrow-btn"-->
+            &larr;
+        </button>
+    </div>
+    <div class="carousel_nav">
+        <button class="carousel_indicator current-slide"></button>
+        <button class="carousel_indicator"></button>
+        <button class="carousel_indicator"></button>
+        <button class="carousel_indicator"></button>
+        <button class="carousel_indicator"></button>
+    </div>
+        <%- include ('layouts/footer') -%>
+
+        <script src="js/carousel.js"></script>
+    </main>
 </body>
-</html> 
+</html>

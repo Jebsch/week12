@@ -1,7 +1,7 @@
 "use strict"
 //Section used to define code for carousel
 
-const track = document.queryselector ('.carousel_container'); 
+const track = document.querySelector('.carousel_container'); 
 
 const slide = Array.from(track.children);
 
@@ -9,7 +9,7 @@ const nextButton = document.querySelector('.carousel_button--right');
 
 const prevButton = document.querySelector('.carousel_button--left');
 
-const dotsNav = document.querySelector('.carousel_mav');
+const dotsNav = document.querySelector('.carousel_nav');
 
 const dots = Array.from(dotsNav.children);
 
@@ -36,16 +36,33 @@ const moveSlide = (track, currentPhoto, destSlide) => {
     track.style.transform = 'translateX(-' + destSlide.style.left + ')';
     currentPhoto.classList.remove ('current-slide');
     destSlide.classList.add ('current-slide');
+    let intervalId = setInterval(swapImage, 4000);
+}
+
+const swapImage = ()=>{
+    const currentPhoto = track.querySelector('.current-slide');
+    let nextslide;
+    if (currentPhoto.nextElementSibling !== null) {
+        var nextSlide = currentPhoto.nextElementSibling;
+    }
+    else{
+        var nextSlide =currentPhoto.parentElement.firstElementChild;   
+    }
+    const currentDot = dotsNav.querySelector('.current-slide');
+    const nextDot = currentDot.nextElementSibling;
+    moveSlide (track, currentPhoto, nextSlide);
+    dotUpdate (currentDot, nextDot);
+       
 }
 
 //Making a function to indicate dots being operated on the bottom nav
 const dotUpdate = (currentDot, targDot) => {
     currentDot.classList.remove('current-slide');
-    currentDot.classList.add('current-slide');
+    targDot.classList.add('current-slide');
 }
 
 //Function to hide and show arrows indicating when the end or beginning of slide is present
-const hideNShowArrow = (slide, prevButton, nextButton, targInd) => {
+/*const hideNShowArrow = (slide, prevButton, nextButton, targInd) => {
     if (targInd === 0) {
         prevButton.classList.add('is-hidden');
         nextButton.classList.remove('is-hidden');
@@ -58,37 +75,52 @@ const hideNShowArrow = (slide, prevButton, nextButton, targInd) => {
         prevButton.classList.remove('is-hidden');
         nextButton.classList.remove('is-hidden');
     }
-}
+}*/
 //When left pressed, photos shift left by 1
 prevButton.addEventListener('click', e => {
     const currentPhoto = track.querySelector('.current-slide');
-    const prevSlide = currentPhoto.oreviousElementSibling;
+    if (currentPhoto.previousElementSibling !== null) {
+        var prevSlide = currentPhoto.previousElementSibling;
+    }
+    else{
+        var prevSlide =currentPhoto.parentElement.lastElementChild;   
+    }
+    const prevSlide = currentPhoto.previousElementSibling;
     const currentDot = dotsNav.querySelector('.current-slide');
     const prevDot = currentDot.previousElementSibling;
-    const nextInd = slide.findIndex(slide => slide === nextSlide);
+    const prevInd = slide.findIndex(slide => slide === prevSlide);
 
     //Moving to previous slide
     moveSlide (track, currentPhoto, prevSlide);
     dotUpdate (currentDot, prevDot);
-    hideNShowArrow (slide, prevButton, nextButton, nextInd);
+    clearInterval(intervalId);
+    intervalId = setInterval(swapImage, 4000);
 });
+
 //When right pressed, photos shift right by 1
 nextButton.addEventListener('click', e => {
     const currentPhoto = track.querySelector('.current-slide');
+    if (currentPhoto.nextElementSibling !== null) {
+        var nextSlide = currentPhoto.nextElementSibling;
+    }
+    else{
+        var nextSlide =currentPhoto.parentElement.firstElementChild;   
+    }
     const nextSlide = currentPhoto.nextElementSibling;
     const currentDot = dotsNav.querySelector('.current-slide');
     const nextDot = currentDot.nextElementSibling;
-    const prevInd = slide.findIndex(slide => slide === prevSlide);
+    const nextInd = slide.findIndex(slide => slide === nextSlide);
 
     //Moving to next slide
     moveSlide (track, currentPhoto, nextSlide);
     dotUpdate (currentDot, nextDot);
-    hideNShowArrow (slide, prevButton, nextButton, prevInd);
+    clearInterval(intervalId);
+    intervalId = setInterval(swapImage, 4000);
 });
 
 //When indicator pressed, move to correlated slide
 
-dotsNav.addEventListener('click', e) => {
+dotsNav.addEventListener('click', e => {
     //What is clicked/Which indicator clicked
     const targDot = e.target.closest('button');
 
@@ -98,5 +130,21 @@ dotsNav.addEventListener('click', e) => {
     //Lets coder know if an indicator is being pressed
     //console.log(targDot);
     if (!targDot) return;
-//... (22 lines left)
-}
+    const currentPhoto = track.querySelector('.current-slide');
+    const currentDot = dotsNav.querySelector('.current-slide');
+
+    const targInd = dots.findIndex (dot => dot === targDot );
+    const destSlide = slide[targInd];
+    //Logs 
+    //console.log(dots);
+    //Returns values of indicator positions in array
+    //console.log(targInd)
+
+    //Tracking the current slide and then making sure the user can reach/click on another photo where it transitions to it
+    moveSlide (track, currentPhoto, destSlide);
+
+    //Making sure indicator dot functions and visually changes
+    //Done by calling function dotUpdate
+    dotUpdate (currentDot, targDot);
+});
+

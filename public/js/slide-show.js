@@ -27,7 +27,13 @@ const lastImage = ()=>{
     caption.textContent = imageCache[imageCounter].alt;
     
 }
+//preloading first image
+const url1='<img src="images/image1.jpg">';
 
+function preloadImage(url1) {
+    var img = new Image();
+    img.src= url1;
+}
 
 document.addEventListener("DOMContentLoaded", () => {
     const links= document.querySelectorAll("a.carousel");

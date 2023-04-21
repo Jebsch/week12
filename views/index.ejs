@@ -11,26 +11,28 @@
       <header><a href="images/Header.png"><img src="images/Header.png" alt="Header Image"></a></header>
     </div>
     <main>
-      <h1>The Smartest Home</h1>
       <%- include('layouts/menu') -%>
+      <h1>The Smartest Home</h1>
       <div>
         <h3 id="date_display"></h3>
       </div>
-      <form>
+      <form id="index-form" action="/update-index" method="post">
         <div>
           <label>Notifications</label>
           <input type="checkbox" id="notifications" checked />
         </div>
-        <div>
+        <div style="align-items: center; display:flex">
         <label>Power Mode</label>
+        <div class="power-mode-container">
             <input type="radio" id="off" name="lighting_mode" value="Off">
             <label class="radio" for="off">Off</label>
             <input type="radio" id="away" name="lighting_mode" value="Away">
             <label class="radio" for="away">Away</label>
             <input type="radio" id="eco" name="lighting_mode" value="Eco">
-            <label class="radio" for="eco">Economy</label>
+            <label class="radio" for="eco" id="eco">Economy</label>
             <input type="radio" id="full" name="lighting_mode" value="Full">
             <label class="radio" for="full">Full</label>
+        </div>
         </div>
         <div>
           <label>Location</label>
@@ -47,10 +49,9 @@
           min="5" max="30" step="0.5" value="21"/>
           <span id="temperature_error" class="error-span"></span>
         </div>
-        <div>
-          <label></label>
-          <input type="submit" value="Update" id="update_settings" />
-          <input type="reset" value="Reset" id="reset_form" />
+        <div class="butts">
+          <input type="submit" value="Update" id="update_settings" action="/update-index" method="post"/>
+          <input type="reset" value="Reset" id="reset_form"/>
         </div>
       </form>
       <div>
@@ -62,30 +63,29 @@
       </div>
       <div>
           <label for="duration">Duration</label>
-          <p style="display:inline-block">Hours:
-          <input class="name" type="number" id="duration-hours" name="duration-hours" min="0" max="23"style="margin:15px">
-          Minutes:</p>
-          <input class="name" type="number" id="duration-minutes" name="duration-minutes" min="0" max="59"style="width: 50px;" style="margin:15px">
-          
+          <p style="display:inline">
+          <input class="name duration" type="number" id="duration-hours" placeholder="hours" name="duration-hours" min="0" max="23"style="margin:15px">
+          <input class="name duration" type="number" id="duration-minutes" placeholder="minutes" name="duration-minutes" min="0" max="59"style="margin:15px">
+          </p>
       </div>
       <div style="text-align: center;">
       <button id="set-temp">Set Temporary Temperature</button>
       </div>
       <h2>Current Settings</h2>
       <div>
-        <label>Notifications&nbsp;</label>
+        <label class=profile>Notifications&nbsp;</label>
         <span class="current-setting" id="setting_notifications">On</span>
       </div>
       <div>
-        <label>Lighting Mode&nbsp;</label>
+        <label class=profile>Lighting Mode&nbsp;</label>
         <span class="current-setting" id="setting_lighting_mode">Eco</span>
       </div>
       <div>
-        <label>Location&nbsp;</label>
+        <label class=profile>Location&nbsp;</label>
         <span class="current-setting" id="setting_location">L7W 4T8</span>
       </div>
       <div>
-        <label>Temperature&nbsp;</label>
+        <label class=profile>Temperature&nbsp;</label>
         <span class="current-setting" id="setting_temperature">21</span>
         <span>°C</span>
       </div>

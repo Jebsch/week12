@@ -25,14 +25,27 @@ app.listen(PORT, () => {
 
 app.get("/", (req, res) => {
   //res.sendFile(path.resolve(__dirname + "/views/", "index.html"));
-  res.render("index");
+  console.log(req.session);
+  let sessy = req.session.sessy;
+  res.render("index", {sessy});
+});
+
+app.post("/update-index", (req, res) =>{
+  console.log(req.body);
+  req.session.sessy = req.body;
+  res.redirect("/");
 });
 
 app.get("/profile", (req, res) => {
-  console.log(req.session)
-
+  console.log(req.session);
   let user = req.session.user;
   res.render("profile", {user})
+});
+
+app.post("/update-profile", (req, res) =>{
+  console.log(req.body);
+  req.session.user = req.body;
+  res.redirect("/");
 });
 
 app.get("/terms", (req, res) => {
